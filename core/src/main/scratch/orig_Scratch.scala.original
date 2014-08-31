@@ -1,0 +1,7 @@
+package scratch
+
+import com.badlogic.gdx.Game
+
+class Scratch extends Game {
+    override def create() {}
+}
