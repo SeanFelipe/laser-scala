@@ -6,3 +6,5 @@ project/boot/
 project/plugins/project
 bin/
 gen/
+
+*.swp
