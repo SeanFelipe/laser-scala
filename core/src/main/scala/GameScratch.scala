@@ -26,11 +26,27 @@ class HappyScreen extends Screen {
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
     batch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE)
     batch.begin()
-    shapeRenderer.begin(ShapeType.Line)
-    shapeRenderer.setColor(1, 1, 0, 1)
-    shapeRenderer.line(100, 100, 500, 500)
-    shapeRenderer.end()
+    drawLines()
     batch.end()
+  }
+
+  def drawLines() {
+    val sx = 100
+    val ex = 300
+    val y = 100
+    val numlines = 5
+    val transparency_delta = 100f / numlines / 100f
+//    println(transparency_delta)
+    var transparency = 0f
+
+    shapeRenderer.begin(ShapeType.Line)
+    for ( i <- 1 to numlines ) {
+      transparency = transparency + transparency_delta * i
+//      println(transparency)
+      shapeRenderer.setColor(1, 1, 0, transparency)
+      shapeRenderer.line(sx, y + i, ex, y + i)
+    }
+    shapeRenderer.end()
   }
 
   def resize(width: Int, height: Int) = {}
